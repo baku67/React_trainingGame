@@ -9,6 +9,8 @@ function App() {
   const [isCharSelected, setIsCharSelected] = useState(false)
   const [charSelected, setCharSelected] = useState(null)
 
+  const [stageNbr, setStageNbr] = useState(0)
+
   function launchGame() {
     setIsLandingPage(false)
   }
@@ -37,7 +39,7 @@ function App() {
   else {
     return (
       <>
-        <SelectChar onSelectChar={selectChar} />
+        <SelectChar onSelectChar={selectChar} isCharSelected={isCharSelected} />
       </>
     )
   }

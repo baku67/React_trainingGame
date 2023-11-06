@@ -5,9 +5,10 @@ import { ClassType } from '../ClassType/ClassType'
 import { useState } from 'react'
 
 
-export function SelectChar({onSelectChar}) {
+export function SelectChar({onSelectChar, isCharSelected}) {
 
     const [classTypes, setClassTypes] = useState(ELEMENTS)
+
 
     const result = classTypes.map((elem) => {
         return (
@@ -26,6 +27,7 @@ export function SelectChar({onSelectChar}) {
             <div className={s.classTypeContainer}>
                 {result}
             </div>
+            <button disabled={!isCharSelected} className={"btn btn-primary"}>Valider</button>
         </div>
     )
 
