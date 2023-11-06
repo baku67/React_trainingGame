@@ -9,6 +9,16 @@ export function SelectChar({onSelectChar, isCharSelected}) {
 
     const [classTypes, setClassTypes] = useState(ELEMENTS)
 
+    const [isClassTypeSelected, setIsClassTypeSelected] = useState(false)
+
+    const [classTypeSelected, setClassTypeSelected] = useState("")
+
+
+    function selectClassType(classType) {
+        setIsClassTypeSelected(true)
+        setClassTypeSelected(classType)
+    }
+
 
     const result = classTypes.map((elem) => {
         return (
@@ -16,7 +26,8 @@ export function SelectChar({onSelectChar, isCharSelected}) {
                 key={elem.name} 
                 name={elem.name} 
                 description={elem.description} 
-                onSelectChar={onSelectChar}
+                onSelectChar={selectClassType}
+                isSelected={classTypeSelected==elem.name ? true : false}
             />
         )
     })
@@ -27,7 +38,13 @@ export function SelectChar({onSelectChar, isCharSelected}) {
             <div className={s.classTypeContainer}>
                 {result}
             </div>
-            <button disabled={!isCharSelected} className={"btn btn-primary"}>Valider</button>
+            <button 
+                disabled={!isClassTypeSelected} 
+                className={`btn btn-primary ${s.validateCharSelect}`}
+                onClick={() => onSelectChar(classTypeSelected)}
+            >
+                Valider
+            </button>
         </div>
     )
 

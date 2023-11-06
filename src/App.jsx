@@ -7,7 +7,7 @@ function App() {
   const [isLandingPage, setIsLandingPage] = useState(true)
 
   const [isCharSelected, setIsCharSelected] = useState(false)
-  const [charSelected, setCharSelected] = useState(null)
+  const [charSelected, setCharSelected] = useState("")
 
   const [stageNbr, setStageNbr] = useState(0)
 
@@ -32,7 +32,7 @@ function App() {
   else if (isCharSelected) {
     return (
       <>
-
+        
       </>
     )
     }
