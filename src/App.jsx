@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { LandingPage } from './components/LandingPage/LandingPage'
 import { SelectChar } from './components/SelectChar/SelectChar'
+import { FightStage } from './components/Stages/FightStage/FightStage'
 
 function App() {
   
@@ -9,7 +10,7 @@ function App() {
   const [isCharSelected, setIsCharSelected] = useState(false)
   const [charSelected, setCharSelected] = useState("")
 
-  const [stageNbr, setStageNbr] = useState(0)
+  const [stageNbr, setStageNbr] = useState(1)
 
   function launchGame() {
     setIsLandingPage(false)
@@ -32,7 +33,7 @@ function App() {
   else if (isCharSelected) {
     return (
       <>
-        
+        <FightStage stageNbr={stageNbr} charSelected={charSelected} />
       </>
     )
     }
