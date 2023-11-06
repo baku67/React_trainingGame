@@ -11,3 +11,7 @@
     background-color: #181820;
     border: 1px solid rgba(128, 128, 128, 0.829);
 }
+
+.heart {
+    color: red;
+}

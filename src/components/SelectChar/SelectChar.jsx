@@ -26,8 +26,9 @@ export function SelectChar({onSelectChar, isCharSelected}) {
                 key={elem.name} 
                 name={elem.name} 
                 description={elem.description} 
+                hp={elem.hp}
                 onSelectChar={selectClassType}
-                isSelected={classTypeSelected==elem.name ? true : false}
+                isSelected={classTypeSelected.name==elem.name ? true : false}
             />
         )
     })
