@@ -17,13 +17,28 @@ export function FightStage({stageNbr, charSelected}) {
         }
     }
 
+    function attackEnnemySelected() {
+        selectedEnnemy.hp = selectedEnnemy.hp - charSelected.attack;
+        console.log("hp selected ennemy: " + selectedEnnemy.hp)
+
+    }
+
 
     return (
         <>
             <Header pageTitle={`Rêve N°${stageNbr}: Combat`} />
+            
             <div>
-                <EnnemiSection selectedEnnemy={selectedEnnemy} onSelectEnnemy={updateSelectedEnnemy} stageNbr={stageNbr} />
-                <CharacterSection selectedEnnemy={selectedEnnemy} charSelected={charSelected} />
+                <EnnemiSection 
+                    selectedEnnemy={selectedEnnemy} 
+                    onSelectEnnemy={updateSelectedEnnemy} 
+                    stageNbr={stageNbr} 
+                />
+                <CharacterSection 
+                    attackEnnemy={attackEnnemySelected} 
+                    selectedEnnemy={selectedEnnemy} 
+                    charSelected={charSelected} 
+                />
             </div>
         </>
     )

@@ -1,6 +1,6 @@
 import s from './style.module.css'
 
-export function CharacterSection({charSelected, selectedEnnemy}) {
+export function CharacterSection({charSelected, selectedEnnemy, attackEnnemy}) {
 
     console.log("charSelected:" + charSelected)
 
@@ -11,7 +11,7 @@ export function CharacterSection({charSelected, selectedEnnemy}) {
             <p><i className={`fa-solid fa-heart ${s.heart}`}></i> {charSelected.hp}</p>
             <p><i className="fa-solid fa-burst"></i> {charSelected.attack}</p>
 
-            <button disabled={selectedEnnemy ? false : true}>Attack</button>
+            <button onClick={() => attackEnnemy(charSelected.attack)} disabled={selectedEnnemy ? false : true}>Attack</button>
         </div>
     )
 }

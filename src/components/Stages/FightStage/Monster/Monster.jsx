@@ -12,7 +12,7 @@ export function Monster({object, onSelectEnnemy, isSelected}) {
             return 'rgba(128, 128, 128, 0.500)'
         }
         else if (isHovered) {
-            return 'rgba(128, 128, 128, 0.300)'
+            return 'rgba(128, 128, 128, 0.250)'
         }
         else {
             return 'rgba(128, 128, 128, 0.137)'
@@ -30,7 +30,7 @@ export function Monster({object, onSelectEnnemy, isSelected}) {
 
             }}
         >
-            <p>{object.name}</p>
+            <p>{object.name.charAt(0).toUpperCase() + object.name.slice(1)}</p>
             <p>{hp} <i className={`fa-solid fa-heart ${s.heart}`}></i></p>
             <img src={object.img} className={s.monsterImg} />
         </div>
