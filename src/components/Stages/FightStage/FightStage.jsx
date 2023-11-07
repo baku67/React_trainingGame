@@ -9,17 +9,21 @@ export function FightStage({stageNbr, charSelected}) {
     const [selectedEnnemy, setSelectedEnnemy] = useState(null)
 
     function updateSelectedEnnemy(ennemy) {
-        setSelectedEnnemy(ennemy)
+        if(ennemy === selectedEnnemy) {
+            setSelectedEnnemy(null)
+        }
+        else {
+            setSelectedEnnemy(ennemy)
+        }
     }
 
-    console.log(selectedEnnemy)
 
     return (
         <>
             <Header pageTitle={`Rêve N°${stageNbr}: Combat`} />
             <div>
                 <EnnemiSection selectedEnnemy={selectedEnnemy} onSelectEnnemy={updateSelectedEnnemy} stageNbr={stageNbr} />
-                <CharacterSection charSelected={charSelected} />
+                <CharacterSection selectedEnnemy={selectedEnnemy} charSelected={charSelected} />
             </div>
         </>
     )
