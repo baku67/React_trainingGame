@@ -3,4 +3,13 @@
     background-position: center;
     background-size: cover;
     height: 50vh;
+
+    text-align: right;
+    padding: 20px;
+
+    display: inline-flex;
+    justify-content: space-evenly;
+
+
+    width: 100%;
 }

@@ -2,6 +2,8 @@
     background-color: #181820;
     border-top: 1px solid rgba(128, 128, 128, 0.322);
     height: 38vh;
+
+    padding: 20px;
 }
 
 .heart {

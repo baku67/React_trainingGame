@@ -6,7 +6,7 @@ export function CharacterSection({charSelected}) {
         <div className={s.container}>
             <p>{charSelected.name}</p>
             <p>{charSelected.description}</p>
-            <p><i class={`fa-solid fa-heart ${s.heart}`}></i> {charSelected.hp}</p>
+            <p><i className={`fa-solid fa-heart ${s.heart}`}></i> {charSelected.hp}</p>
         </div>
     )
 }

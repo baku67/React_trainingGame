@@ -1,0 +1,24 @@
+.heart {
+    color: red;
+}
+
+.monsterImg {
+    width: 170px;
+    border-radius: 3px;
+}
+
+.monsterCard {
+    background-color: rgba(128, 128, 128, 0.137);
+
+    padding: 10px 20px;
+    border: 4px solid rgba(255, 255, 255, 0);
+    border-radius: 5px;
+
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.activeMonster {
+    background-color: rgb(30 41 52) !important;
+    border: 4px solid rgba(173, 173, 173, 0.75);
+}
