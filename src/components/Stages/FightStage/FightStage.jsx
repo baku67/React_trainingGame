@@ -24,13 +24,13 @@ export function FightStage({stageNbr, charSelected}) {
         }
     }
 
-    function attackEnnemySelected() {
+    function attackEnnemySelected(attackValue) {
 
         if (selectedEnnemy) {
 
             const found = ennemiesList.find((element) => element == selectedEnnemy);
             if(found) {
-                if( found.hp-charSelected.attack <= 0) {
+                if( found.hp - attackValue <= 0) {
                     found.hp = 0
 
                     if(ennemiesList.every((element, index, array) => element.hp === 0)) {
@@ -38,7 +38,7 @@ export function FightStage({stageNbr, charSelected}) {
                     };
                 }
                 else {
-                    found.hp = found.hp-charSelected.attack;
+                    found.hp = found.hp - attackValue;
                 }
             }
             setEnnemiesList((prevUsersList) => {
