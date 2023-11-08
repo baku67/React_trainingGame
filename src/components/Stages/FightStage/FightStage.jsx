@@ -3,10 +3,21 @@ import { EnnemiSection } from './EnnemiSection/EnnemiSection'
 import { CharacterSection } from './CharacterSection/CharacterSection'
 import { Header } from '../../Header/Header'
 import { useState } from 'react'
+import { useEffect } from 'react'
+import { MONSTERS } from './constant'
 
 export function FightStage({stageNbr, charSelected}) {
 
     const [selectedEnnemy, setSelectedEnnemy] = useState(null)
+
+    const [ennemiesList, setEnnemiesList] = useState(MONSTERS)
+
+    console.log({ennemiesList})
+
+    // useEffect(() => {
+    //     setEnnemiesList(MONSTERS)
+    // }, [])
+
 
     function updateSelectedEnnemy(ennemy) {
         if(ennemy === selectedEnnemy) {
@@ -18,8 +29,12 @@ export function FightStage({stageNbr, charSelected}) {
     }
 
     function attackEnnemySelected() {
-        selectedEnnemy.hp = selectedEnnemy.hp - charSelected.attack;
-        console.log("hp selected ennemy: " + selectedEnnemy.hp)
+        if (selectedEnnemy) {
+            const updatedEnnemy = { ...selectedEnnemy, hp: selectedEnnemy.hp - charSelected.attack };
+            setSelectedEnnemy(updatedEnnemy);
+            console.log("hp selected enemy: " + updatedEnnemy.hp);
+            setEnnemiesList([])
+        }
 
     }
 
@@ -33,6 +48,7 @@ export function FightStage({stageNbr, charSelected}) {
                     selectedEnnemy={selectedEnnemy} 
                     onSelectEnnemy={updateSelectedEnnemy} 
                     stageNbr={stageNbr} 
+                    ennemiesList={ennemiesList}
                 />
                 <CharacterSection 
                     attackEnnemy={attackEnnemySelected} 
