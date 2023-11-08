@@ -12,6 +12,8 @@ export function FightStage({stageNbr, charSelected}) {
 
     const [selectedEnnemy, setSelectedEnnemy] = useState(null)
 
+    const [isFinished, setIsFinished] = useState(false)
+
 
     function updateSelectedEnnemy(ennemy) {
         if(ennemy === selectedEnnemy) {
@@ -29,8 +31,11 @@ export function FightStage({stageNbr, charSelected}) {
             const found = ennemiesList.find((element) => element == selectedEnnemy);
             if(found) {
                 if( found.hp-charSelected.attack <= 0) {
-                    // DEDGE: on retire
                     found.hp = 0
+
+                    if(ennemiesList.every((element, index, array) => element.hp === 0)) {
+                        setIsFinished(true)
+                    };
                 }
                 else {
                     found.hp = found.hp-charSelected.attack;
@@ -48,6 +53,7 @@ export function FightStage({stageNbr, charSelected}) {
     }
 
 
+
     return (
         <>
             <Header pageTitle={`Rêve N°${stageNbr}: Combat`} />
@@ -59,6 +65,7 @@ export function FightStage({stageNbr, charSelected}) {
                     stageNbr={stageNbr} 
                     ennemiesList={ennemiesList}
                 />
+                {isFinished && <p>FINISHED</p>}
                 <CharacterSection 
                     attackEnnemy={attackEnnemySelected} 
                     selectedEnnemy={selectedEnnemy} 
@@ -67,4 +74,5 @@ export function FightStage({stageNbr, charSelected}) {
             </div>
         </>
     )
+        
 }
