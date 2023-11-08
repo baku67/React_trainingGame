@@ -1,11 +1,7 @@
 import s from './style.module.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export function Monster({object, onSelectEnnemy, isSelected}) {
-
-    console.log({object})
-
-    const [hp, setHp] = useState(object.hp)
 
     const [isHovered, setIsHovered] = useState(false)
 
@@ -33,8 +29,10 @@ export function Monster({object, onSelectEnnemy, isSelected}) {
             }}
         >
             <p>{object.name.charAt(0).toUpperCase() + object.name.slice(1)}</p>
-            <p>{object.hp} <i className={`fa-solid fa-heart ${s.heart}`}></i></p>
-            <img src={object.img} className={s.monsterImg} />
+
+            { object.hp==0 ? <p>DEAD</p> : <p>{object.hp} <i className={`fa-solid fa-heart ${s.heart}`}></i></p>}
+            
+            <img src={object.img} className={`${s.monsterImg} ${object.hp === 0 ? s.isDead : ""}`} />
         </div>
     )
 }

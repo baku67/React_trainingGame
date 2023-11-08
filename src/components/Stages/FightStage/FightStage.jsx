@@ -8,15 +8,9 @@ import { MONSTERS } from './constant'
 
 export function FightStage({stageNbr, charSelected}) {
 
-    const [selectedEnnemy, setSelectedEnnemy] = useState(null)
-
     const [ennemiesList, setEnnemiesList] = useState(MONSTERS)
 
-    console.log({ennemiesList})
-
-    // useEffect(() => {
-    //     setEnnemiesList(MONSTERS)
-    // }, [])
+    const [selectedEnnemy, setSelectedEnnemy] = useState(null)
 
 
     function updateSelectedEnnemy(ennemy) {
@@ -29,13 +23,28 @@ export function FightStage({stageNbr, charSelected}) {
     }
 
     function attackEnnemySelected() {
-        if (selectedEnnemy) {
-            const updatedEnnemy = { ...selectedEnnemy, hp: selectedEnnemy.hp - charSelected.attack };
-            setSelectedEnnemy(updatedEnnemy);
-            console.log("hp selected enemy: " + updatedEnnemy.hp);
-            setEnnemiesList([])
-        }
 
+        if (selectedEnnemy) {
+
+            const found = ennemiesList.find((element) => element == selectedEnnemy);
+            if(found) {
+                if( found.hp-charSelected.attack <= 0) {
+                    // DEDGE: on retire
+                    found.hp = 0
+                }
+                else {
+                    found.hp = found.hp-charSelected.attack;
+                }
+            }
+            setEnnemiesList((prevUsersList) => {
+                return prevUsersList.map((monster) => {
+                    if (monster === selectedEnnemy) {
+                      return found;
+                    }
+                    return monster;
+                  });
+            })
+        }
     }
 
 
