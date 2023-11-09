@@ -39,7 +39,7 @@ export function JaugeAttack({attackEnnemy, charSelected}) {
         };
     }, [value, increase]);
 
-    console.log('test')
+
 
     return (
         <>

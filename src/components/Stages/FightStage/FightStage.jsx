@@ -6,7 +6,7 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import { MONSTERS } from './constant'
 
-export function FightStage({stageNbr, charSelected}) {
+export function FightStage({stageNbr, charSelected, attackUserHp}) {
 
     const [ennemiesList, setEnnemiesList] = useState(MONSTERS)
 
@@ -31,14 +31,20 @@ export function FightStage({stageNbr, charSelected}) {
             const found = ennemiesList.find((element) => element == selectedEnnemy);
             if(found) {
                 if( found.hp - attackValue <= 0) {
-                    found.hp = 0
+
+                    found.hp = 0;
+                    found.attack = 0;
 
                     if(ennemiesList.every((element, index, array) => element.hp === 0)) {
-                        setIsFinished(true)
-                    };
+                        setIsFinished(true);
+                    }
+                    else {
+                        tourEnnemis();
+                    }
                 }
                 else {
                     found.hp = found.hp - attackValue;
+                    tourEnnemis();
                 }
             }
             setEnnemiesList((prevUsersList) => {
@@ -52,6 +58,11 @@ export function FightStage({stageNbr, charSelected}) {
         }
     }
 
+    function tourEnnemis() {
+        // DGT = cumul des attack des monstres 
+        const totalDgt = ennemiesList.reduce((acc, objet) => acc + objet.attack, 0);
+        attackUserHp(totalDgt)
+    }
 
 
     return (
