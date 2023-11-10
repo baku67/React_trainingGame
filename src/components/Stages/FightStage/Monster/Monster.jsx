@@ -17,6 +17,8 @@ export function Monster({object, onSelectEnnemy, isSelected}) {
         }
     }
 
+    console.log(object)
+
     return (
         <div 
             className={`${isSelected ? s.activeMonster : ""} ${s.monsterCard}`} 

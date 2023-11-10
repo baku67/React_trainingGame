@@ -25,6 +25,10 @@ function App() {
     setCharSelected({...charSelected, hp: charSelected.hp - value})
   }
 
+  function inscrStageNbr() {
+    setStageNbr(stageNbr + 1)
+  }
+
   console.log(charSelected)
 
 
@@ -38,7 +42,7 @@ function App() {
   else if (isCharSelected) {
     return (
       <>
-        <FightStage stageNbr={stageNbr} charSelected={charSelected} attackUserHp={attackUserHp} />
+        <FightStage stageNbr={stageNbr} charSelected={charSelected} attackUserHp={attackUserHp} inscrStageNbr={inscrStageNbr} />
       </>
     )
     }
