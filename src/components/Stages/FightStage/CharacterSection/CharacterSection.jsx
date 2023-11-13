@@ -2,14 +2,15 @@ import s from './style.module.css'
 import { JaugeAttack } from '../JaugeAttack/JaugeAttack'
 import { useState } from 'react'
 
-export function CharacterSection({charSelected, selectedEnnemy, attackEnnemy, showJauge, setShowJauge}) {
+export function CharacterSection({charSelected, selectedEnnemy, attackEnnemy, showJauge, setShowJauge, turn}) {
 
     
 
     return (
         <div className={s.container}>
+            
             <p>{charSelected.name}</p>
-            <p>{charSelected.description}</p>
+            {/* <p>{charSelected.description}</p> */}
 
             {/* Jauge de vie du personnage */}
             <div className={s.gaugeContainer}>
@@ -25,9 +26,8 @@ export function CharacterSection({charSelected, selectedEnnemy, attackEnnemy, sh
                 </div>
             </div>
 
-            {/* <p><i className="fa-solid fa-burst"></i> {charSelected.attack}</p> */}
-
-            {!showJauge && 
+            {/* Tour player: Bouton Attaquer */}
+            {turn=="player" && !showJauge && 
                 <button 
                     onClick={() => setShowJauge(true)} 
                     disabled={selectedEnnemy ? false : true}
@@ -35,11 +35,19 @@ export function CharacterSection({charSelected, selectedEnnemy, attackEnnemy, sh
                     Attaquer
                 </button>
             }
-            {/* Jauge d'attaque: */}
-            {showJauge && 
+            {/* Tour player: Jauge d'attaque: */}
+            {turn=="player" && showJauge && 
                 <div>
                     <JaugeAttack attackEnnemy={attackEnnemy} charSelected={charSelected} />
                     <button onClick={() => setShowJauge(false)}>Annuler</button>
+                </div>
+            }
+
+
+            {/* Tour ennemis: Affichage des dégats des ennemis sous la barre de vie */}
+            {turn=="ennemies" && 
+                <div>
+                    BAMMMM
                 </div>
             }
 

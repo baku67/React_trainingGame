@@ -105,9 +105,11 @@ export function FightStage({stageNbr, charSelected, attackUserHp, inscrStageNbr}
             setTimeout(() => {
                 const totalDgt = ennemiesList.reduce((acc, objet) => acc + objet.attack, 0);
                 attackUserHp(totalDgt)
+            }, 1000)
+            setTimeout(() => {
                 setTurn("player")
                 resolve("resolved")
-            }, 1500);
+            }, 2500);
         })
     }
 
@@ -150,22 +152,14 @@ export function FightStage({stageNbr, charSelected, attackUserHp, inscrStageNbr}
                         stageNbr={stageNbr} 
                         ennemiesList={ennemiesList}
                     />
-                    
-                    {turn=="player" && 
-                        <CharacterSection 
-                            attackEnnemy={attackEnnemySelected} 
-                            selectedEnnemy={selectedEnnemy} 
-                            charSelected={charSelected} 
-                            showJauge={showJauge}
-                            setShowJauge={setShowJauge}
-                        />
-                    }
-                    {turn=="ennemies" && 
-                        <EnnemiesAttack 
-                            ennemiesList={ennemiesList} 
-                            charSelected={charSelected}
-                        />
-                    }
+                    <CharacterSection 
+                        attackEnnemy={attackEnnemySelected} 
+                        selectedEnnemy={selectedEnnemy} 
+                        charSelected={charSelected} 
+                        showJauge={showJauge}
+                        setShowJauge={setShowJauge}
+                        turn={turn}
+                    />
                 </div>
             </>
         }

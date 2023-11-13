@@ -25,4 +25,6 @@
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     background-color: rgb(255, 0, 55);
+
+    transition: all 0.5s;
 }
