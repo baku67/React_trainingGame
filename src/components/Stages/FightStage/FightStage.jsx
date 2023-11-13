@@ -9,9 +9,6 @@ import { MONSTERS } from './EnnemiSection/constant'
 
 export function FightStage({stageNbr, charSelected, attackUserHp, inscrStageNbr}) {
 
-    // const [ennemiesList, setEnnemiesList] = useState(MONSTERS)
-
-    // ATTENTION: il faut générer l'id au moment de la génération de l'array 
     const [ennemiesList, setEnnemiesList] = useState(getRandomMonsters())
 
     const [selectedEnnemy, setSelectedEnnemy] = useState(null)
@@ -36,11 +33,6 @@ export function FightStage({stageNbr, charSelected, attackUserHp, inscrStageNbr}
             randomMonsters.push(newMonster);
         }
 
-        // console.log("randomMonsters:");
-        // console.log(randomMonsters);
-        // console.log("MONSTERS:");
-        // console.log(MONSTERS);
-        
         return randomMonsters;
     }
 
@@ -123,7 +115,6 @@ export function FightStage({stageNbr, charSelected, attackUserHp, inscrStageNbr}
 
     function newStage() {
         inscrStageNbr()
-        // setEnnemiesList(MONSTERS)
         setEnnemiesList(getRandomMonsters())
         setTurn("player")
         setIsFinished(false)
