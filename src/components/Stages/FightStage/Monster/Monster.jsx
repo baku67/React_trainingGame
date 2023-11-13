@@ -20,24 +20,36 @@ export function Monster({object, onSelectEnnemy, isSelected}) {
     console.log(object)
 
     return (
-        <div 
-            className={`${isSelected ? s.activeMonster : ""} ${s.monsterCard}`} 
-            onClick={() => onSelectEnnemy(object)}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-            style={{
-                backgroundColor: getBackgroundColor(),
-
-            }}
+        <div
+          className={`${isSelected ? s.activeMonster : ""} ${s.monsterCard}`}
+          onClick={() => onSelectEnnemy(object)}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          style={{
+            backgroundColor: getBackgroundColor(),
+          }}
         >
-
-
-                    <p>{object && object.name.charAt(0).toUpperCase() + object.name.slice(1)}</p>
-
-                    { object && object.hp==0 ? <p>DEAD</p> : <p>{object.hp} <i className={`fa-solid fa-heart ${s.heart}`}></i></p>}
-                    
-                    <img src={object.img} className={`${s.monsterImg} ${object.hp === 0 ? s.isDead : ""}`} />
-
+          {object && (
+            <>
+              <p>{object.name.charAt(0).toUpperCase() + object.name.slice(1)}</p>
+      
+              {object.hp === 0 ? (
+                <p>DEAD</p>
+              ) : (
+                <p>
+                  {object.hp}{" "}
+                  <i className={`fa-solid fa-heart ${s.heart}`}></i>
+                </p>
+              )}
+      
+              <img
+                src={object.img}
+                className={`${s.monsterImg} ${
+                  object.hp === 0 ? s.isDead : ""
+                }`}
+              />
+            </>
+          )}
         </div>
-    )
+      );
 }

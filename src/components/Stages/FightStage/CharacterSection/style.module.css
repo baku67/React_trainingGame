@@ -9,3 +9,10 @@
 .heart {
     color: red;
 }
+
+.gaugeContainer {
+    background-color: rgb(53, 53, 53);
+}
+.filledGauge {
+    background-color: red;
+}

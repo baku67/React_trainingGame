@@ -27,7 +27,7 @@ export function FightStage({stageNbr, charSelected, attackUserHp, inscrStageNbr}
     function getRandomMonsters() {
         const randomMonsters = [];
         
-        for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < stageNbr; i++) {
             const randomIndex = getRandomInt(0, MONSTERS.length - 1);
             const newMonster = { ...MONSTERS[randomIndex], id: i + 1 };
             randomMonsters.push(newMonster);

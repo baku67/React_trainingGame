@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { LandingPage } from './components/LandingPage/LandingPage'
 import { SelectChar } from './components/SelectChar/SelectChar'
 import { FightStage } from './components/Stages/FightStage/FightStage'
+import s from './style.module.css'
 
 function App() {
   

@@ -5,31 +5,23 @@ import { useState } from 'react'
 
 export function EnnemiSection({onSelectEnnemy, selectedEnnemy, stageNbr, ennemiesList}) {
 
-    // Tant que cumul des lvl des monstres < stageNbr, on ajoute des mobs à la liste
-    // let ennemies = MONSTERS
-    // const [ennemiesList, setEnnemiesList] = useState(ennemies)
+    const ennemies = ennemiesList.map((elem) => 
+        <li key={elem.id}>
+            <Monster
+                onSelectEnnemy={onSelectEnnemy}
+                object={elem}
+                isSelected={selectedEnnemy === elem}
+            />
+        </li>
+    )
 
     return (
-        <div className={s.container}>
-        {ennemiesList && ennemiesList.length > 0 && (
         <>
-            <Monster 
-            onSelectEnnemy={onSelectEnnemy} 
-            object={ennemiesList[0]} 
-            isSelected={selectedEnnemy === ennemiesList[0]}
-            />
-            <Monster 
-            onSelectEnnemy={onSelectEnnemy} 
-            object={ennemiesList[2]} 
-            isSelected={selectedEnnemy === ennemiesList[2]}
-            />
-            <Monster 
-            onSelectEnnemy={onSelectEnnemy} 
-            object={ennemiesList[1]} 
-            isSelected={selectedEnnemy === ennemiesList[1]}
-            />
+            {ennemiesList && ennemiesList.length > 0 && (
+                <ul className={s.container}>
+                    {ennemies}
+                </ul>
+            )}
         </>
-        )}
-    </div>
     )
 }
