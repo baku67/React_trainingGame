@@ -30,11 +30,15 @@ export function Monster({object, onSelectEnnemy, isSelected}) {
 
             }}
         >
-            <p>{object.name.charAt(0).toUpperCase() + object.name.slice(1)}</p>
+            {object &&
+                <>
+                    <p>{object.name.charAt(0).toUpperCase() + object.name.slice(1)}</p>
 
-            { object.hp==0 ? <p>DEAD</p> : <p>{object.hp} <i className={`fa-solid fa-heart ${s.heart}`}></i></p>}
-            
-            <img src={object.img} className={`${s.monsterImg} ${object.hp === 0 ? s.isDead : ""}`} />
+                    {/* // { object.hp==0 ? <p>DEAD</p> : <p>{object.hp} <i className={`fa-solid fa-heart ${s.heart}`}></i></p>} */}
+                    
+                    <img src={object.img} className={`${s.monsterImg} ${object.hp === 0 ? s.isDead : ""}`} />
+                </>
+            }
         </div>
     )
 }

@@ -9,9 +9,10 @@ import { MONSTERS } from './EnnemiSection/constant'
 
 export function FightStage({stageNbr, charSelected, attackUserHp, inscrStageNbr}) {
 
-    const [ennemiesList, setEnnemiesList] = useState(MONSTERS)
+    // const [ennemiesList, setEnnemiesList] = useState(MONSTERS)
 
-    // const [ennemiesList, setEnnemiesList] = useState(getRandomMonsters())
+    // ATTENTION: il faut générer l'id au moment de la génération de l'array 
+    const [ennemiesList, setEnnemiesList] = useState(getRandomMonsters())
 
     const [selectedEnnemy, setSelectedEnnemy] = useState(null)
 
@@ -25,29 +26,27 @@ export function FightStage({stageNbr, charSelected, attackUserHp, inscrStageNbr}
     function getRandomInt(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
-
+      
     function getRandomMonsters() {
         const randomMonsters = [];
-
         
-      
-        for (let i = 0; i < 2; i++) {
-          // Choisissez un index aléatoire dans MONSTERS
-          const randomIndex = getRandomInt(0, MONSTERS.length - 1);
-
-          // Ajoutez l'objet correspondant à l'index aléatoire dans le nouveau tableau
-          randomMonsters.push(MONSTERS[randomIndex]);
+        for (let i = 0; i < 3; i++) {
+            const randomIndex = getRandomInt(0, MONSTERS.length - 1);
+            const newMonster = { ...MONSTERS[randomIndex], id: i + 1 };
+            randomMonsters.push(newMonster);
         }
 
-        console.log(MONSTERS)
-        console.log(randomMonsters)
+        // console.log("randomMonsters:");
+        // console.log(randomMonsters);
+        // console.log("MONSTERS:");
+        // console.log(MONSTERS);
         
-      
         return randomMonsters;
-      }
-      console.log(ennemiesList)
+    }
 
 
+
+    
     function updateSelectedEnnemy(ennemy) {
         if(ennemy.hp > 0) {
             if(ennemy === selectedEnnemy) {
@@ -124,6 +123,7 @@ export function FightStage({stageNbr, charSelected, attackUserHp, inscrStageNbr}
 
     function newStage() {
         inscrStageNbr()
+        // setEnnemiesList(MONSTERS)
         setEnnemiesList(getRandomMonsters())
         setTurn("player")
         setIsFinished(false)

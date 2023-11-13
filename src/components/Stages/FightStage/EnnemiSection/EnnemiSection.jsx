@@ -9,26 +9,27 @@ export function EnnemiSection({onSelectEnnemy, selectedEnnemy, stageNbr, ennemie
     // let ennemies = MONSTERS
     // const [ennemiesList, setEnnemiesList] = useState(ennemies)
 
-    console.log({ennemiesList})
-
     return (
         <div className={s.container}>
+        {ennemiesList && ennemiesList.length > 0 && (
+        <>
             <Monster 
-                onSelectEnnemy={onSelectEnnemy} 
-                object={ennemiesList[0]} 
-                isSelected={selectedEnnemy==ennemiesList[0]}
+            onSelectEnnemy={onSelectEnnemy} 
+            object={ennemiesList[0]} 
+            isSelected={selectedEnnemy === ennemiesList[0]}
             />
             <Monster 
-                onSelectEnnemy={onSelectEnnemy} 
-                object={ennemiesList[2]} 
-                isSelected={selectedEnnemy==ennemiesList[2]}
+            onSelectEnnemy={onSelectEnnemy} 
+            object={ennemiesList[2]} 
+            isSelected={selectedEnnemy === ennemiesList[2]}
             />
             <Monster 
-                onSelectEnnemy={onSelectEnnemy} 
-                object={ennemiesList[1]} 
-                isSelected={selectedEnnemy==ennemiesList[1]}
+            onSelectEnnemy={onSelectEnnemy} 
+            object={ennemiesList[1]} 
+            isSelected={selectedEnnemy === ennemiesList[1]}
             />
-            
-        </div>
+        </>
+        )}
+    </div>
     )
 }
