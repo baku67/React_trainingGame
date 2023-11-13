@@ -11,8 +11,18 @@
 }
 
 .gaugeContainer {
+    border-radius: 4px;
     background-color: rgb(53, 53, 53);
+    margin: 15px auto;
 }
 .filledGauge {
-    background-color: red;
+    height: 29px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0px 7px;
+    border-bottom:2px solid rgb(168, 105, 105);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background-color: rgb(255, 0, 55);
 }

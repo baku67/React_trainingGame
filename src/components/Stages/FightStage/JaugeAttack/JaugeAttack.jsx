@@ -11,7 +11,7 @@ export function JaugeAttack({attackEnnemy, charSelected}) {
         attackEnnemy(parseInt(charSelected.attack * value / 100)); 
     }
 
-
+    // Idée: la jauge retombe cash à 0 après 100 pour notion de greed/save gameplay
     useEffect(() => {
         let intervalId;
 
@@ -50,7 +50,10 @@ export function JaugeAttack({attackEnnemy, charSelected}) {
                     max={100}
                     onChange={(e) => console.log(e.target.value)} 
                 />
-                <button type="submit" onClick={handleAttack}>Go {parseInt(charSelected.attack * value / 100)}</button>
+                <button type="submit" onClick={handleAttack}>
+                    {parseInt(charSelected.attack * value / 100)}
+                    &nbsp; <i className="fa-solid fa-burst"></i>
+                </button>
             </form>
         </>
     )

@@ -1,5 +1,5 @@
 export const ELEMENTS = [
-    {name:"Sleepwalker", description:"Commence la partie avec un objet aléatoire", hp:250, attack:200},
-    {name:"Dreamer", description:"Commence la partie avec un sort supplémentaire", hp:200, attack:200},
-    {name:"Insomniac", description:"Possède une meilleure résistance au sommeil", hp:300, attack:200},
+    {name:"Sleepwalker", description:"Commence la partie avec un objet aléatoire", hp:50, maxHp:50, attack:200},
+    {name:"Dreamer", description:"Commence la partie avec un sort supplémentaire", hp:40, maxHp:40, attack:200},
+    {name:"Insomniac", description:"Possède une meilleure résistance au sommeil", hp:60, maxHp:60, attack:200},
 ]

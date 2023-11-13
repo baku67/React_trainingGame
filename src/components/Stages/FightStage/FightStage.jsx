@@ -53,6 +53,7 @@ export function FightStage({stageNbr, charSelected, attackUserHp, inscrStageNbr}
         }
     }
 
+    
     function attackEnnemySelected(attackValue) {
 
         if (selectedEnnemy) {

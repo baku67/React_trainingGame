@@ -22,24 +22,22 @@ export function SelectChar({onSelectChar, isCharSelected}) {
 
     const result = classTypes.map((elem) => {
         return (
-            <ClassType 
-                key={elem.name} 
-                name={elem.name} 
-                description={elem.description} 
-                hp={elem.hp}
-                attack={elem.attack}
-                onSelectChar={selectClassType}
-                isSelected={classTypeSelected.name==elem.name ? true : false}
-            />
+            <li key={elem.name}>
+                <ClassType 
+                    elem={elem}
+                    onSelectChar={selectClassType}
+                    isSelected={classTypeSelected.name==elem.name ? true : false}
+                />
+            </li>
         )
     })
 
     return(
         <div className={s.container}>
             <Header pageTitle={"Choose your character"} subTitle="" />
-            <div className={s.classTypeContainer}>
+            <ul className={s.classTypeContainer}>
                 {result}
-            </div>
+            </ul>
             <button 
                 disabled={!isClassTypeSelected} 
                 className={`btn btn-primary ${s.validateCharSelect}`}

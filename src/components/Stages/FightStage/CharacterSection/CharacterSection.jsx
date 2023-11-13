@@ -10,22 +10,29 @@ export function CharacterSection({charSelected, selectedEnnemy, attackEnnemy}) {
         <div className={s.container}>
             <p>{charSelected.name}</p>
             <p>{charSelected.description}</p>
-            <div>
-                <i className={`fa-solid fa-heart ${s.heart}`}></i>
-                <div className={s.gaugeContainer}>
-                    <div className={s.filledGauge} style={{height:"24px", width:`${15}%`}}></div>
-                </div>
-                {/* Afficher le pourcentage et le nbr/nbrTotal */}
-                {charSelected.hp}
-            </div>
-            <p><i className="fa-solid fa-burst"></i> {charSelected.attack}</p>
 
-            {/* <button onClick={() => attackEnnemy(charSelected.attack)} disabled={selectedEnnemy ? false : true}>Attack</button> */}
-            {!showJauge && <button onClick={() => setShowJauge(true)} disabled={selectedEnnemy ? false : true}>Attaquer</button>}
+            {/* Jauge de vie du personnage */}
+            <div className={s.gaugeContainer}>
+                <div className={s.filledGauge} style={{width:`${(charSelected.hp / charSelected.maxHp) * 100}%`}}>
+                    <i className={`fa-solid fa-heart fa-beat`} style={{color:"white"}}></i> {`${charSelected.hp}/${charSelected.maxHp}`}
+                </div>
+            </div>
+
+            {/* <p><i className="fa-solid fa-burst"></i> {charSelected.attack}</p> */}
+
+            {!showJauge && 
+                <button 
+                    onClick={() => setShowJauge(true)} 
+                    disabled={selectedEnnemy ? false : true}
+                >
+                    Attaquer
+                </button>
+            }
+            {/* Jauge d'attaque: */}
             {showJauge && 
                 <div>
                     <JaugeAttack attackEnnemy={attackEnnemy} charSelected={charSelected} />
-                    <button onClick={() => setShowJauge(false)}>Retour</button>
+                    <button onClick={() => setShowJauge(false)}>Annuler</button>
                 </div>
             }
 
