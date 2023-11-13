@@ -17,6 +17,8 @@ export function FightStage({stageNbr, charSelected, attackUserHp, inscrStageNbr}
 
     const [turn, setTurn] = useState("player")
 
+    const [showJauge, setShowJauge] = useState(false)
+
     const [playerCurrAttack, setPlayerCurrAttack] = useState(0)
 
 
@@ -43,9 +45,11 @@ export function FightStage({stageNbr, charSelected, attackUserHp, inscrStageNbr}
         if(ennemy.hp > 0) {
             if(ennemy === selectedEnnemy) {
                 setSelectedEnnemy(null)
+                setShowJauge(false)
             }
             else {
                 setSelectedEnnemy(ennemy)
+                // setShowJauge(true)
             }
         }
         else {
@@ -92,6 +96,7 @@ export function FightStage({stageNbr, charSelected, attackUserHp, inscrStageNbr}
     function tourEnnemis() {
 
         setSelectedEnnemy(null)
+        setShowJauge(false)
 
         return new Promise((resolve) => {
 
@@ -118,6 +123,7 @@ export function FightStage({stageNbr, charSelected, attackUserHp, inscrStageNbr}
         inscrStageNbr()
         setEnnemiesList(getRandomMonsters())
         setTurn("player")
+        setShowJauge(false)
         setIsFinished(false)
         
     }
@@ -150,6 +156,8 @@ export function FightStage({stageNbr, charSelected, attackUserHp, inscrStageNbr}
                             attackEnnemy={attackEnnemySelected} 
                             selectedEnnemy={selectedEnnemy} 
                             charSelected={charSelected} 
+                            showJauge={showJauge}
+                            setShowJauge={setShowJauge}
                         />
                     }
                     {turn=="ennemies" && 

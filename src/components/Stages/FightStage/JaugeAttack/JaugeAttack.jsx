@@ -11,7 +11,7 @@ export function JaugeAttack({attackEnnemy, charSelected}) {
         attackEnnemy(parseInt(charSelected.attack * value / 100)); 
     }
 
-    // Idée: la jauge retombe cash à 0 après 100 pour notion de greed/save gameplay
+    // Idée: la jauge retombe cash à 0 après 100 pour notion de greed/save gameplay (et la jauge augmente de plus en plus, presque expo)
     useEffect(() => {
         let intervalId;
 

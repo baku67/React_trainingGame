@@ -2,9 +2,9 @@ import s from './style.module.css'
 import { JaugeAttack } from '../JaugeAttack/JaugeAttack'
 import { useState } from 'react'
 
-export function CharacterSection({charSelected, selectedEnnemy, attackEnnemy}) {
+export function CharacterSection({charSelected, selectedEnnemy, attackEnnemy, showJauge, setShowJauge}) {
 
-    const [showJauge, setShowJauge] = useState(false)
+    
 
     return (
         <div className={s.container}>
@@ -13,7 +13,14 @@ export function CharacterSection({charSelected, selectedEnnemy, attackEnnemy}) {
 
             {/* Jauge de vie du personnage */}
             <div className={s.gaugeContainer}>
-                <div className={s.filledGauge} style={{width:`${(charSelected.hp / charSelected.maxHp) * 100}%`}}>
+                <div 
+                    className={s.filledGauge} 
+                    style={{
+                        width:`${(charSelected.hp / charSelected.maxHp) * 100}%`,
+                        borderTopRightRadius: (charSelected.hp  === charSelected.maxHp) ? "5px" : "0px",
+                        borderBottomRightRadius: (charSelected.hp === charSelected.maxHp) ? "5px" : "0px",
+                    }}
+                >
                     <i className={`fa-solid fa-heart fa-beat`} style={{color:"white"}}></i> {`${charSelected.hp}/${charSelected.maxHp}`}
                 </div>
             </div>
