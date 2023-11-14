@@ -1,4 +1,6 @@
 import s from './style.module.css'
+import { Header } from '../../Header/Header'
+import { Inventory } from './Inventory/Inventory'
 
 export function ShopStage({stageNbr, charSelected, inscrStageNbr}) {
 
@@ -6,7 +8,12 @@ export function ShopStage({stageNbr, charSelected, inscrStageNbr}) {
 
     return (
         <>
-            <h1 style={{color:"grey"}}>ShopStage !!!!!!!!!!!!!!!!!!!!!!</h1>
+            <Header pageTitle={`Shop N°${stageNbr/2} !`} />
+
+            {/* <ItemsShopList /> */}
+
+            <Inventory charSelected={charSelected} />
+
         </>
     )
 }
