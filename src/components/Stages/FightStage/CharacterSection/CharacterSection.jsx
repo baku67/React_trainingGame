@@ -9,7 +9,10 @@ export function CharacterSection({charSelected, selectedEnnemy, attackEnnemy, sh
     return (
         <div className={s.container}>
             
-            <p>{charSelected.name}</p>
+            <div className={s.charHeader}>
+                <span>{charSelected.name}</span>
+                <span>{charSelected.coins} <i className="fa-solid fa-coins"></i></span>
+            </div>
             {/* <p>{charSelected.description}</p> */}
 
             {/* Jauge de vie du personnage */}

@@ -33,3 +33,9 @@
     transform: rotate(90deg);
     color: red;
 }
+
+.charHeader {
+    display: inline-flex;
+    gap: 50px;
+
+}

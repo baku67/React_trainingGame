@@ -9,7 +9,7 @@ export function ShopStage({stageNbr, charSelected, inscrStageNbr}) {
 
     return (
         <>
-            <Header pageTitle={`Shop N°${stageNbr/3} !`} />
+            <Header pageTitle={`Shop N°${stageNbr/5} !`} />
 
             <ItemsShopList />
 

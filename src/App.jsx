@@ -27,13 +27,16 @@ function App() {
     setCharSelected({...charSelected, hp: charSelected.hp - value})
   }
 
+  function gainCoins(value) {
+    setCharSelected({...charSelected, coins: charSelected.coins + value})
+  }
+
   function inscrStageNbr() {
     setStageNbr(stageNbr + 1)
   }
 
 
   // Remplacer par const "content"
-  // ajouter condition si stageNumber == mutliple de 3, <ShopStage />
 
   if(isLandingPage) {
     return (
@@ -46,7 +49,7 @@ function App() {
   else if (isCharSelected) {
     // Si stage 5, 10, 15 etc... : <ShopStage />
     // Sinon <FightStage />
-    if(stageNbr % 3 == 0) {
+    if(stageNbr % 5 == 0) {
         return (
           <>
             <ShopStage stageNbr={stageNbr} charSelected={charSelected} />
@@ -56,7 +59,13 @@ function App() {
     else {
       return (
         <>
-          <FightStage stageNbr={stageNbr} charSelected={charSelected} attackUserHp={attackUserHp} inscrStageNbr={inscrStageNbr} />
+          <FightStage 
+            stageNbr={stageNbr} 
+            charSelected={charSelected} 
+            attackUserHp={attackUserHp} 
+            inscrStageNbr={inscrStageNbr} 
+            gainCoins={gainCoins}
+          />
         </>
       )
     }

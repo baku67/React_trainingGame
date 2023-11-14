@@ -7,7 +7,7 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import { MONSTERS } from './EnnemiSection/constant'
 
-export function FightStage({stageNbr, charSelected, attackUserHp, inscrStageNbr}) {
+export function FightStage({stageNbr, charSelected, attackUserHp, inscrStageNbr, gainCoins}) {
 
     const [ennemiesList, setEnnemiesList] = useState(getRandomMonsters())
 
@@ -64,24 +64,31 @@ export function FightStage({stageNbr, charSelected, attackUserHp, inscrStageNbr}
 
             const found = ennemiesList.find((element) => element == selectedEnnemy);
             if(found) {
+
+                // Le monstre est tué
                 if( found.hp - attackValue <= 0) {
 
                     found.hp = 0;
                     found.attack = 0;
+                    gainCoins(found.coins)
 
+                    // check si tout les monstres morts
                     if(ennemiesList.every((element, index, array) => element.hp === 0)) {
                         setIsFinished(true);
                     }
+                    // Sinon tour ennemi
                     else {
                         asyncCallTourEnnemies();
                     }
                 }
+                // Le monstre est encore vivant, tour ennemi
                 else {
                     found.hp = found.hp - attackValue;
                     asyncCallTourEnnemies();
                 }
             }
             setPlayerCurrAttack(attackValue)
+            // Maj de la liste ennemis:
             setEnnemiesList((prevUsersList) => {
                 return prevUsersList.map((monster) => {
                     if (monster === selectedEnnemy) {
