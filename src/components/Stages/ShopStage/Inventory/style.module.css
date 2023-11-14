@@ -1,3 +1,8 @@
 .container {
-    background-color: rgb(53, 53, 53);
+    height: 48vh;
+    background: url('./background_floor.jpg');
+    background-position: center;
+    background-size: cover;
+
+    transition: all 0.5s;
 }

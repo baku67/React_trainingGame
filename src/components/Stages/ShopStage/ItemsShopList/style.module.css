@@ -1,0 +1,6 @@
+.container {
+    background-image: url('./landingPage.jpg');
+    background-position: center;
+    background-size: cover;
+    height: 40vh;
+}

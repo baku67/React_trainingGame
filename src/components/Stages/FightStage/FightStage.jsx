@@ -127,7 +127,7 @@ export function FightStage({stageNbr, charSelected, attackUserHp, inscrStageNbr}
         setTurn("player")
         setShowJauge(false)
         setIsFinished(false)
-        
+        setSelectedEnnemy(null)
     }
 
 
