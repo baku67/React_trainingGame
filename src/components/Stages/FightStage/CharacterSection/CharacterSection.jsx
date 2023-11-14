@@ -39,6 +39,8 @@ export function CharacterSection({charSelected, selectedEnnemy, attackEnnemy, sh
             {turn=="player" && showJauge && 
                 <div>
                     <JaugeAttack attackEnnemy={attackEnnemy} charSelected={charSelected} />
+                    <span style={{fontSize: "1.2em"}}>ou [ESPACE]</span>
+                    <br />
                     <button onClick={() => setShowJauge(false)}>Annuler</button>
                 </div>
             }

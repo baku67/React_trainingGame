@@ -4,61 +4,66 @@ import { useEffect } from "react";
 export function JaugeAttack({attackEnnemy, charSelected}) {
 
     const [value, setValue] = useState(0);
-    const [increase, setIncrease] = useState(true);
 
     function handleAttack(e) {
         e.preventDefault();
         attackEnnemy(parseInt(charSelected.attack * value / 100)); 
     }
 
-    // Idée: la jauge retombe cash à 0 après 100 pour notion de greed/save gameplay (et la jauge augmente de plus en plus, presque expo)
+
     useEffect(() => {
 
+        // *** La jauge se lance automatiquement, et retombe cash à 0 après 100 (cycles) pour notion de greed/save gameplay 
         let intervalId;
 
-        // Démarage auto de la jauge 
         const startJaugeIncrease = () => {
-            intervalId = setInterval(() => {
-                setValue((prevValue) => (prevValue < 100 ? prevValue + 1 : 0)); // Reset à 0 when reaching 100
-            }, 10);
+          intervalId = setInterval(() => {
+            setValue((prevValue) => (prevValue < 100 ? prevValue + 1 : 0));
+          }, 10);
         };
+    
+        startJaugeIncrease();
+        // *** Fin Jauge cycles
 
-        // *** Cycles increase/decrease de la jauge (Sisyphus vibes)
-        // const startJaugeIncrease = () => {
-        //     intervalId = setInterval(() => {
-        //     if (increase) {
-        //         setValue((prevValue) => (prevValue < 100 ? prevValue + 1 : prevValue));
-        //         if (value >= 100) {
-        //             setIncrease(false);
-        //         }
-        //     } else {
-        //         setValue((prevValue) => (prevValue > 0 ? prevValue - 1 : prevValue));
-        //         if (value <= 0) {
-        //             setIncrease(true);
-        //         }
-        //     }
-        //     }, 15);
-        // };
+        // *** [ESPACE] pour valider jaugeAttack
+            const handleSpacePress = (e) => {
+            if (e.code === "Space") {
+                // Trigger the button click when space is pressed
+                handleAttack(e);
+            }
+            };
+        
+            const handleSpaceRelease = () => {
+            // Stop the button click when space is released
+            clearInterval(intervalId);
+            };
+        
+            // Add event listeners for keydown and keyup
+            window.addEventListener("keydown", handleSpacePress);
+            window.addEventListener("keyup", handleSpaceRelease);
+        
+            return () => {
+                // Clean up event listeners when the component is unmounted
+                window.removeEventListener("keydown", handleSpacePress);
+                window.removeEventListener("keyup", handleSpaceRelease);
+                clearInterval(intervalId);
+            };
 
-        startJaugeIncrease(); // Démarrer l'augmentation automatique de la jauge
-
-        return () => {
-            clearInterval(intervalId); // Nettoyer le setInterval lorsque le composant est démonté
-        };
-
-    }, [value, increase]);
+      }, [value]);
 
 
 
     return (
         <>
             <form>
+                {/* Jauge d'attaque */}
                 <input 
                     type="range" 
                     value={value} 
                     max={100}
-                    onChange={(e) => console.log(e.target.value)} 
+                    onChange={() => console.log(value)}
                 />
+                {/* Bouton d'attaque */}
                 <button type="submit" onClick={handleAttack}>
                     {parseInt(charSelected.attack * value / 100)}
                     &nbsp; <i className="fa-solid fa-burst"></i>

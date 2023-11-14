@@ -28,3 +28,8 @@
 
     transition: all 0.5s;
 }
+
+.spaceBarAdviser {
+    transform: rotate(90deg);
+    color: red;
+}

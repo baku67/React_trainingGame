@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { LandingPage } from './components/LandingPage/LandingPage'
 import { SelectChar } from './components/SelectChar/SelectChar'
 import { FightStage } from './components/Stages/FightStage/FightStage'
+import { ShopStage } from './components/Stages/ShopStage/ShopStage'
 import s from './style.module.css'
 
 function App() {
@@ -30,8 +31,9 @@ function App() {
     setStageNbr(stageNbr + 1)
   }
 
-  console.log(charSelected)
 
+  // Remplacer par const "content"
+  // ajouter condition si stageNumber == mutliple de 3, <ShopStage />
 
   if(isLandingPage) {
     return (
@@ -40,13 +42,25 @@ function App() {
       </>
     )
   }
+  // Déroulement des stages
   else if (isCharSelected) {
-    return (
-      <>
-        <FightStage stageNbr={stageNbr} charSelected={charSelected} attackUserHp={attackUserHp} inscrStageNbr={inscrStageNbr} />
-      </>
-    )
+    // Si stage 5, 10, 15 etc... : <ShopStage />
+    // Sinon <FightStage />
+    if(stageNbr % 5 == 0) {
+        return (
+          <>
+            <ShopStage stageNbr={stageNbr} charSelected={charSelected} />
+          </>
+        )
     }
+    else {
+      return (
+        <>
+          <FightStage stageNbr={stageNbr} charSelected={charSelected} attackUserHp={attackUserHp} inscrStageNbr={inscrStageNbr} />
+        </>
+      )
+    }
+  }
   else {
     return (
       <>
