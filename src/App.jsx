@@ -3,6 +3,7 @@ import { LandingPage } from './components/LandingPage/LandingPage'
 import { SelectChar } from './components/SelectChar/SelectChar'
 import { FightStage } from './components/Stages/FightStage/FightStage'
 import { ShopStage } from './components/Stages/ShopStage/ShopStage'
+import { ITEMS } from './constant'
 import s from './style.module.css'
 
 function App() {
@@ -49,10 +50,10 @@ function App() {
   else if (isCharSelected) {
     // Si stage 5, 10, 15 etc... : <ShopStage />
     // Sinon <FightStage />
-    if(stageNbr % 5 == 0) {
+    if(stageNbr % 3 == 0) {
         return (
           <>
-            <ShopStage stageNbr={stageNbr} charSelected={charSelected} />
+            <ShopStage stageNbr={stageNbr} charSelected={charSelected} itemsList={ITEMS} />
           </>
         )
     }

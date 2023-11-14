@@ -31,7 +31,7 @@ export function Monster({object, onSelectEnnemy, isSelected}) {
         >
           {object && (
             <>
-              <p>{object.name.charAt(0).toUpperCase() + object.name.slice(1)}</p>
+              <p>{object.name.charAt(0).toUpperCase() + object.name.slice(1)} &nbsp; lvl {object.lvl}</p>
       
               {object.hp === 0 ? (
                 <p>DEAD</p>
