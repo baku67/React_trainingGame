@@ -46,7 +46,7 @@ function App() {
   else if (isCharSelected) {
     // Si stage 5, 10, 15 etc... : <ShopStage />
     // Sinon <FightStage />
-    if(stageNbr % 2 == 0) {
+    if(stageNbr % 3 == 0) {
         return (
           <>
             <ShopStage stageNbr={stageNbr} charSelected={charSelected} />
