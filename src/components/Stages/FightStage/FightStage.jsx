@@ -1,7 +1,7 @@
 import s from './style.module.css'
 import { EnnemiSection } from './EnnemiSection/EnnemiSection'
 import { CharacterSection } from './CharacterSection/CharacterSection'
-import { EnnemiesAttack } from './ennemiesAttack/EnnemiesAttack'
+import { EnnemiesAttack } from './EnnemiesAttack/EnnemiesAttack'
 import { Header } from '../../Header/Header'
 import { useState } from 'react'
 import { useEffect } from 'react'
