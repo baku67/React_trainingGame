@@ -6,14 +6,14 @@ export function ItemsShopList({itemsList}) {
 
     const list = itemsList.map((elem) => 
         <li key={elem.name} >
-            <Item obj={elem} />
+            <Item obj={elem} isOwned={false} />
         </li>         
     ) 
 
     return (
         
         <ul className={s.container}>
-            {list && list}
+            {list}
         </ul>
 
     )

@@ -17,7 +17,6 @@ export function Monster({object, onSelectEnnemy, isSelected}) {
         }
     }
 
-    console.log(object)
 
     return (
         <div

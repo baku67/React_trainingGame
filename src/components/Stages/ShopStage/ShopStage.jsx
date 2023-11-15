@@ -7,12 +7,9 @@ export function ShopStage({stageNbr, charSelected, inscrStageNbr, itemsList}) {
 
     // Quand "fini"/"valider"/"endShop", call inscrStageNbr
 
-    console.log("ITEMS(ShopStage)")
-    console.log(itemsList)
-
     return (
         <>
-            <Header pageTitle={`Shop N°${stageNbr/3} !`} />
+            <Header pageTitle={`Shop ${stageNbr/3}`} />
 
             <ItemsShopList itemsList={itemsList} />
 

@@ -121,10 +121,9 @@ export function FightStage({stageNbr, charSelected, attackUserHp, inscrStageNbr,
     }
 
     async function asyncCallTourEnnemies() {
-        console.log("tour ennemies ...")
+        // console.log("tour ennemies ...")
         const result = await tourEnnemis();
-        console.log(result)
-        // Expected output : "resolved"
+        // console.log(result)
     }
 
 

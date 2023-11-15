@@ -3,7 +3,7 @@ import { LandingPage } from './components/LandingPage/LandingPage'
 import { SelectChar } from './components/SelectChar/SelectChar'
 import { FightStage } from './components/Stages/FightStage/FightStage'
 import { ShopStage } from './components/Stages/ShopStage/ShopStage'
-import { ITEMS } from './constant'
+import { ITEMS } from './items'
 import s from './style.module.css'
 
 function App() {
