@@ -1,6 +1,6 @@
 import s from './style.module.css'
 
-export function Item({obj, isOwned}) {
+export function Item({obj, isOwned, buyItem}) {
 
     return (
         <div className={s.container}>
@@ -10,7 +10,10 @@ export function Item({obj, isOwned}) {
 
             {/* Prix d'achat si section SHOP */}
             {!isOwned && 
-                <span>{obj.price}</span>
+                <>
+                    <span>{obj.price}</span>
+                    <button onClick={() => buyItem(obj)}>Acheter</button>
+                </>
             }
 
         </div>

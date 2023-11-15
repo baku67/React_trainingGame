@@ -36,6 +36,13 @@ function App() {
     setStageNbr(stageNbr + 1)
   }
 
+  function addItem(item) {
+    setCharSelected({
+      ...charSelected,
+      inventory: [...charSelected.inventory, item]
+    });  
+  }
+
 
   // Remplacer par const "content"
 
@@ -53,7 +60,7 @@ function App() {
     if(stageNbr % 3 == 0) {
         return (
           <>
-            <ShopStage stageNbr={stageNbr} charSelected={charSelected} itemsList={ITEMS} />
+            <ShopStage stageNbr={stageNbr} charSelected={charSelected} itemsList={ITEMS} addItem={addItem} />
           </>
         )
     }
