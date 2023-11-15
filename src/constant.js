@@ -1,3 +1,4 @@
 export const ITEMS = [
-    { name: "couteau", description: "fait pas du bien", price: 5}
+    { name: "Couteau", description: "fait pas du bien", price: 5},
+    { name: "Marteau", description: "fait vraiment pas du bien", price: 5},
 ]

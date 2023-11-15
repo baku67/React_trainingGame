@@ -1,11 +1,8 @@
-export function Item({item}) {
-
-    console.log("ITEM(Item.jsx)");
-    console.log(item);
+export function Item({obj}) {
 
     return (
         <>
-            <p>{item.name}</p>
+            <p>{obj.name}</p>
         </>
     )
 }
