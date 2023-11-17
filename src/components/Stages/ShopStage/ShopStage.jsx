@@ -3,7 +3,7 @@ import { Header } from '../../Header/Header'
 import { Inventory } from './Inventory/Inventory'
 import { ItemsShopList } from './ItemsShopList/ItemsShopList'
 
-export function ShopStage({stageNbr, charSelected, inscrStageNbr, itemsList, addItem}) {
+export function ShopStage({stageNbr, charSelected, inscrStageNbr, itemsList, consoList, addItem}) {
 
     // Quand "fini"/"valider"/"endShop", call inscrStageNbr
 
@@ -11,7 +11,13 @@ export function ShopStage({stageNbr, charSelected, inscrStageNbr, itemsList, add
         <>
             <Header pageTitle={`Shop ${stageNbr/3}`} />
 
-            <ItemsShopList itemsList={itemsList} buyItem={addItem} />
+            <ItemsShopList 
+                itemsList={itemsList} 
+                consoList={consoList}
+                buyItem={addItem} 
+                inscrStageNbr={inscrStageNbr} 
+                coinsLeft={charSelected.coins} 
+            />
 
             <Inventory charSelected={charSelected} />
 

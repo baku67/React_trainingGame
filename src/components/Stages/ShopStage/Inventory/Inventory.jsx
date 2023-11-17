@@ -16,6 +16,7 @@ export function Inventory({charSelected}) {
     return (
         <div  className={s.container}>
             <h2>Inventaire</h2>
+            <span>Golds: {charSelected.coins} <i className="fa-solid fa-coins"></i></span>
             <ul>
                 {inventoryList}
             </ul>

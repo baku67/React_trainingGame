@@ -3,7 +3,7 @@ import { LandingPage } from './components/LandingPage/LandingPage'
 import { SelectChar } from './components/SelectChar/SelectChar'
 import { FightStage } from './components/Stages/FightStage/FightStage'
 import { ShopStage } from './components/Stages/ShopStage/ShopStage'
-import { ITEMS } from './items'
+import { ITEMS, CONSOMMABLES } from './items'
 import s from './style.module.css'
 
 function App() {
@@ -37,10 +37,19 @@ function App() {
   }
 
   function addItem(item) {
-    setCharSelected({
-      ...charSelected,
-      inventory: [...charSelected.inventory, item]
-    });  
+
+    // Vérif si assez de sous
+    if (charSelected.coins - item.price >= 0) {
+      setCharSelected({
+        ...charSelected,
+        inventory: [...charSelected.inventory, item],
+        coins: charSelected.coins - item.price,
+      });  
+    }
+    else {
+      alert('pas assez de sous !')
+    }
+
   }
 
 
@@ -60,7 +69,14 @@ function App() {
     if(stageNbr % 3 == 0) {
         return (
           <>
-            <ShopStage stageNbr={stageNbr} charSelected={charSelected} itemsList={ITEMS} addItem={addItem} />
+            <ShopStage 
+              stageNbr={stageNbr} 
+              charSelected={charSelected} 
+              // Générer le tableau mixant ITEMS et CONSOMMABLES (en fonction du stage, 3items/2conso etc)
+              itemsList={ITEMS} 
+              consoList={CONSOMMABLES}
+              addItem={addItem} 
+              inscrStageNbr={inscrStageNbr} />
           </>
         )
     }
