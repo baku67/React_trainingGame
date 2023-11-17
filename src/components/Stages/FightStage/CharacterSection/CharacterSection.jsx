@@ -2,9 +2,8 @@ import s from './style.module.css'
 import { JaugeAttack } from '../JaugeAttack/JaugeAttack'
 import { useState } from 'react'
 
-export function CharacterSection({charSelected, selectedEnnemy, attackEnnemy, showJauge, setShowJauge, turn}) {
+export function CharacterSection({charSelected, selectedEnnemy, attackEnnemy, showJauge, setShowJauge, turn, buffs}) {
 
-    
 
     return (
         <div className={s.container}>
@@ -12,10 +11,12 @@ export function CharacterSection({charSelected, selectedEnnemy, attackEnnemy, sh
             <div className={s.charHeader}>
                 <span>{charSelected.name}</span>
                 <span>{charSelected.coins} <i className="fa-solid fa-coins"></i></span>
+                <span>{charSelected.attack} (+{buffs.attack}) <i className="fa-solid fa-explosion"></i></span>
+                <span>{charSelected.defense} (+{buffs.defense}) <i className="fa-solid fa-shield"></i></span>
             </div>
             {/* <p>{charSelected.description}</p> */}
 
-            {/* Jauge de vie du personnage */}
+            {/* Jauge de vie du personnage (à factoriser Component) */}
             <div className={s.gaugeContainer}>
                 <div 
                     className={s.filledGauge} 
@@ -25,7 +26,7 @@ export function CharacterSection({charSelected, selectedEnnemy, attackEnnemy, sh
                         borderBottomRightRadius: (charSelected.hp === charSelected.maxHp) ? "5px" : "0px",
                     }}
                 >
-                    <i className={`fa-solid fa-heart fa-beat`} style={{color:"white"}}></i> {`${charSelected.hp}/${charSelected.maxHp}`}
+                    <i className={`fa-solid fa-heart fa-beat`} style={{color:"white"}}></i> {`${charSelected.hp}/${charSelected.maxHp}`} <span>(+{buffs.hp})</span>
                 </div>
             </div>
 

@@ -5,21 +5,21 @@ export function Item({obj, isOwned, buyItem, coinsLeft}) {
     function getItemClass() {
         console.log('proc')
         if(isOwned) {
-            return ""
+            return []
         }
         else {
             if (coinsLeft - obj.price >= 0) {
-                return s.buyable
+                return [s.buyable]
             }
             else {
-                return s.notBuyable
+                return [s.notBuyable]
             }
         }
     }
 
     return (
         <div 
-            className={ getItemClass() } 
+            className={ [s.container, ...getItemClass()].join(' ') } 
             style={{border:"1px solid white"}}
         >
 

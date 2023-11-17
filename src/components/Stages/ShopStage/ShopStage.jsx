@@ -5,7 +5,7 @@ import { ItemsShopList } from './ItemsShopList/ItemsShopList'
 
 export function ShopStage({stageNbr, charSelected, inscrStageNbr, itemsList, consoList, addItem}) {
 
-    // Quand "fini"/"valider"/"endShop", call inscrStageNbr
+    // Générer ici les liste d'objets à vendre parmis ITEMS,etc de constant.js 
 
     return (
         <>

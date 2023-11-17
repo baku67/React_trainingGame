@@ -13,6 +13,9 @@ function App() {
   const [isCharSelected, setIsCharSelected] = useState(false)
   const [charSelected, setCharSelected] = useState("")
 
+  // Buffs Stats du perso (pour voir la différence base(+buff) )
+  const [buffs, setBuffs] = useState({hp: 0, attack: 0, defense: 0})
+
   const [stageNbr, setStageNbr] = useState(1)
 
   function launchGame() {
@@ -40,11 +43,25 @@ function App() {
 
     // Vérif si assez de sous
     if (charSelected.coins - item.price >= 0) {
+
+      // Ajout item à l'array du charSelected et update des stats
       setCharSelected({
         ...charSelected,
         inventory: [...charSelected.inventory, item],
+        maxHp: charSelected.maxHp + item.buffHp,
+        attack: charSelected.attack + item.buffAttack,
+        defense: charSelected.defense + item.buffDefense,
         coins: charSelected.coins - item.price,
-      });  
+      }); 
+
+      // Update des buffs (pour afficher la différence de valeur base/buff) 
+      setBuffs({
+        ...buffs, 
+        hp: buffs.hp + item.buffHp,
+        attack: buffs.attack + item.buffAttack,
+        defense: buffs.defense + item.buffDefense,
+      })
+
     }
     else {
       alert('pas assez de sous !')
@@ -89,6 +106,7 @@ function App() {
             attackUserHp={attackUserHp} 
             inscrStageNbr={inscrStageNbr} 
             gainCoins={gainCoins}
+            buffs={buffs}
           />
         </>
       )

@@ -1,5 +1,6 @@
 .container {
     border: 1px solid white;
+    width: 100px;
 }
 
 .buyable {
@@ -7,6 +8,9 @@
 }
 
 .notBuyable {
-    background-color: rgb(241, 124, 124);
+    background-color: rgba(255, 127, 153, 0.143);
+}
+.notBuyable button {
     opacity: 0.3;
+    pointer-events: none;
 }

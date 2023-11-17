@@ -7,7 +7,7 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import { MONSTERS } from './EnnemiSection/constant'
 
-export function FightStage({stageNbr, charSelected, attackUserHp, inscrStageNbr, gainCoins}) {
+export function FightStage({stageNbr, charSelected, attackUserHp, inscrStageNbr, gainCoins, buffs}) {
 
     const [ennemiesList, setEnnemiesList] = useState(getRandomMonsters())
 
@@ -165,6 +165,7 @@ export function FightStage({stageNbr, charSelected, attackUserHp, inscrStageNbr,
                         showJauge={showJauge}
                         setShowJauge={setShowJauge}
                         turn={turn}
+                        buffs={buffs}
                     />
                 </div>
             </>

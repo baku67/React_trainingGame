@@ -3,4 +3,7 @@
     background-position: center;
     background-size: cover;
     height: 40vh;
+
+    display: flex;
+    justify-content: space-around;
 }
