@@ -3,7 +3,7 @@ import s from './style.module.css'
 export function Item({obj, isOwned, buyItem, coinsLeft}) {
 
     function getItemClass() {
-        console.log('proc')
+
         if(isOwned) {
             return []
         }
@@ -17,6 +17,8 @@ export function Item({obj, isOwned, buyItem, coinsLeft}) {
         }
     }
 
+
+    
     return (
         <div 
             className={ [s.container, ...getItemClass()].join(' ') } 

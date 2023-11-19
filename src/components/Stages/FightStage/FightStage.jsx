@@ -27,8 +27,12 @@ export function FightStage({stageNbr, charSelected, attackUserHp, inscrStageNbr,
     }
       
     function getRandomMonsters() {
+
+        console.log(stageNbr)
+
         const randomMonsters = [];
-        
+
+        // Stage 2 brut
         for (let i = 0; i < stageNbr; i++) {
             const randomIndex = getRandomInt(0, MONSTERS.length - 1);
             const newMonster = { ...MONSTERS[randomIndex], id: i + 1 };
@@ -100,6 +104,7 @@ export function FightStage({stageNbr, charSelected, attackUserHp, inscrStageNbr,
         }
     }
 
+    
     function tourEnnemis() {
 
         setSelectedEnnemy(null)

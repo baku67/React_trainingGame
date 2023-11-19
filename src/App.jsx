@@ -35,6 +35,7 @@ function App() {
     setCharSelected({...charSelected, coins: charSelected.coins + value})
   }
 
+  
   function inscrStageNbr() {
     setStageNbr(stageNbr + 1)
   }
@@ -45,26 +46,35 @@ function App() {
     if (charSelected.coins - item.price >= 0) {
 
       // Ajout item à l'array du charSelected et update des stats
-      setCharSelected({
-        ...charSelected,
-        inventory: [...charSelected.inventory, item],
-        maxHp: charSelected.maxHp + item.buffHp,
-        attack: charSelected.attack + item.buffAttack,
-        defense: charSelected.defense + item.buffDefense,
-        coins: charSelected.coins - item.price,
-      }); 
+      if(item.type === 'item') {
+        setCharSelected({
+          ...charSelected,
+          inventory: [...charSelected.inventory, item],
+          maxHp: charSelected.maxHp + item.buffHp,
+          attack: charSelected.attack + item.buffAttack,
+          defense: charSelected.defense + item.buffDefense,
+          coins: charSelected.coins - item.price,
+        }); 
 
-      // Update des buffs (pour afficher la différence de valeur base/buff) 
-      setBuffs({
-        ...buffs, 
-        hp: buffs.hp + item.buffHp,
-        attack: buffs.attack + item.buffAttack,
-        defense: buffs.defense + item.buffDefense,
-      })
+        // Update des buffs (pour afficher la différence de valeur base/buff) 
+        setBuffs({
+          ...buffs, 
+          hp: buffs.hp + item.buffHp,
+          attack: buffs.attack + item.buffAttack,
+          defense: buffs.defense + item.buffDefense,
+        })
+      }
+      else if (item.type === 'potion') {
+        setCharSelected({
+          ...charSelected,
+          coins: charSelected.coins - item.price,
+          hp: charSelected.hp + item.healHp >= charSelected.maxHp ? charSelected.maxHp : charSelected.hp + item.healHp,
+        })
+      }
+      else {
+        alert('pas assez de sous !')
+      }
 
-    }
-    else {
-      alert('pas assez de sous !')
     }
 
   }
