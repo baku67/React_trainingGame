@@ -37,7 +37,7 @@ function App() {
 
   
   function inscrStageNbr() {
-    setStageNbr(stageNbr + 1)
+    setStageNbr((prevStageNbr) => prevStageNbr + 1);
   }
 
   function addItem(item) {
@@ -93,7 +93,7 @@ function App() {
   else if (isCharSelected) {
     // Si stage 5, 10, 15 etc... : <ShopStage />
     // Sinon <FightStage />
-    if(stageNbr % 3 == 0) {
+    if(stageNbr % 4 == 0) {
         return (
           <>
             <ShopStage 

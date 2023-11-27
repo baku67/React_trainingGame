@@ -1,9 +1,15 @@
 import s from './style.module.css'
 import { MONSTERS } from './constant'
 import { Monster } from '../Monster/Monster'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 export function EnnemiSection({onSelectEnnemy, selectedEnnemy, stageNbr, ennemiesList}) {
+
+    console.log(ennemiesList);
+
+    useEffect(() => {
+        console.log('Updated ennemiesList in EnnemiSection:', ennemiesList);
+      }, [ennemiesList]);
 
     const ennemies = ennemiesList.map((elem) => 
         <li key={elem.id}>
@@ -13,7 +19,7 @@ export function EnnemiSection({onSelectEnnemy, selectedEnnemy, stageNbr, ennemie
                 isSelected={selectedEnnemy === elem}
             />
         </li>
-    )
+    );
 
     return (
         <>

@@ -21,6 +21,8 @@ export function FightStage({stageNbr, charSelected, attackUserHp, inscrStageNbr,
 
     const [playerCurrAttack, setPlayerCurrAttack] = useState(0)
 
+    
+
 
     function getRandomInt(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -28,16 +30,17 @@ export function FightStage({stageNbr, charSelected, attackUserHp, inscrStageNbr,
       
     function getRandomMonsters() {
 
-        console.log(stageNbr)
-
         const randomMonsters = [];
 
-        // Stage 2 brut
         for (let i = 0; i < stageNbr; i++) {
             const randomIndex = getRandomInt(0, MONSTERS.length - 1);
             const newMonster = { ...MONSTERS[randomIndex], id: i + 1 };
             randomMonsters.push(newMonster);
         }
+
+        console.log("Stage N°" + stageNbr)
+        // console.log("Longueur randomMonsters: " + randomMonsters.length)
+        // console.log(randomMonsters)
 
         return randomMonsters;
     }
@@ -74,7 +77,7 @@ export function FightStage({stageNbr, charSelected, attackUserHp, inscrStageNbr,
 
                     found.hp = 0;
                     found.attack = 0;
-                    gainCoins(found.coins)
+                    gainCoins(found.coins);
 
                     // check si tout les monstres morts
                     if(ennemiesList.every((element, index, array) => element.hp === 0)) {
@@ -133,12 +136,15 @@ export function FightStage({stageNbr, charSelected, attackUserHp, inscrStageNbr,
 
 
     function newStage() {
-        inscrStageNbr()
-        setEnnemiesList(getRandomMonsters())
-        setTurn("player")
-        setShowJauge(false)
-        setIsFinished(false)
-        setSelectedEnnemy(null)
+        console.log("Entering newStage: " + stageNbr);
+        inscrStageNbr();
+        const newMonsters = getRandomMonsters();
+        console.log("New Monsters:", newMonsters);
+        setEnnemiesList(newMonsters);
+        setTurn("player");
+        setShowJauge(false);
+        setIsFinished(false);
+        setSelectedEnnemy(null);
     }
 
 

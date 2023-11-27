@@ -9,7 +9,7 @@ export function ShopStage({stageNbr, charSelected, inscrStageNbr, itemsList, con
 
     return (
         <>
-            <Header pageTitle={`Shop ${stageNbr/3}`} />
+            <Header pageTitle={`Shop ${stageNbr/4}`} />
 
             <ItemsShopList 
                 itemsList={itemsList} 
